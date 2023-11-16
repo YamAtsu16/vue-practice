@@ -1,12 +1,10 @@
 <template>
-  <h1>人材管理</h1>
+  <h1>Person</h1>
   <div class="container">
     <PersonPostForm @register="register"/>
-    <div class="list-container">
-      <ul >
+      <ul>
         <PersonList :persons="persons" @delete="deletePerson"/>
       </ul>
-    </div>
   </div>
 </template>
 <script setup lang="ts">

@@ -21,7 +21,9 @@ type Props = {
  * @param person 削除データ
  */
 const onDeleteClick = (person: Person) => {
-  emit("delete", person)
+  if (confirm("delete " + person.name + " ?")) {
+    emit("delete", person)
+  }
 }
 
 </script>

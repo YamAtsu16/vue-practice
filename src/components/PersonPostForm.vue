@@ -1,20 +1,23 @@
 <template>
   <div class="form-container">
+    <span v-if="isValidName" class="error-message">Please enter a name with no more than {{ nameMaxLength }}</span>
     <div class="input-container">
       <div class="input-column">
-        <span>name:</span>
-        <input v-model="inputName" type="text" class="input">
+        <span class="input-label">name:</span>
+        <input v-model="inputName" type="text" class="input-name">
       </div>
       <div class="input-column">
-        <span>age:</span>
-        <input v-model="inputAge" type="number" class="input">
+        <span class="input-label">age:</span>
+        <input v-model="inputAge" type="number" class="input-age">
+      </div>
+      <div>
+        <button class="register-button" :disabled="isValidName" @click="register">register</button>
       </div>
     </div>
-    <button class="register-button" @click="register">register</button>
   </div>
 </template>
 <script setup lang="ts">
-import { ref, defineEmits } from 'vue';
+import { ref, defineEmits, computed } from 'vue';
 
 const emit = defineEmits(["register"])
 
@@ -50,6 +53,14 @@ const isNullOrEmpty = (value: string | number): boolean => {
   return value === null || value === "" ? true : false;
 }
 
+/** 名前入力最大値 */
+const nameMaxLength = 10;
+/** 名前入力バリデーション */
+const isValidName = computed(() => inputName.value.length > nameMaxLength ? true : false)
+
+/** 入力欄の色 */
+const color = computed(() => isValidName.value ? "red" : "white")
+
 </script>
 <style>
 .form-container {
@@ -62,24 +73,33 @@ const isNullOrEmpty = (value: string | number): boolean => {
   margin-bottom: 10px;
   border-radius: 4px;
 }
-span {
-  font-size: 20px;
-  font-weight: bold;
-}
 .input-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 50px;
-  margin-bottom: 20px;
+}
+.input-label {
+  font-size: 20px;
+  font-weight: bold;
 }
 .input-column {
   width: 200px;
   display: flex;
   justify-content: space-between;
 }
-input {
+.input-name {
   width: 120px;
   margin-bottom: 10px;
+  background-color: v-bind(color);
+}
+.input-age {
+  width: 120px;
+  margin-bottom: 10px;
+}
+.error-message {
+  font-size: 12px;
+  font-weight: bold;
+  color: red;
+  margin-bottom: 5px;
 }
 </style>

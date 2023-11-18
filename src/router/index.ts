@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import PersonBase from '../components/PersonBase.vue'
+import App from '../App.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'PersonBase',
-    component: PersonBase
+    name: 'App',
+    component: App
   }
 ]
 

@@ -8,8 +8,8 @@
   </div>
 </template>
 <script setup lang="ts">
-  import PersonPostForm from "./PersonPostForm.vue"
-  import PersonList from "./PersonList.vue"
+  import PersonPostForm from "../components/PersonPostForm.vue"
+  import PersonList from "../components/PersonList.vue"
 import { ref } from "vue";
 
   export type Person = {

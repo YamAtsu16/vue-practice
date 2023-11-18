@@ -6,26 +6,24 @@
   </li>
 </template>
 <script setup lang="ts">
-import { defineProps, defineEmits } from "vue"
-import { Person } from './PersonBase.vue';
+  import { defineProps, defineEmits } from "vue"
+  import { Person } from '../views/Person.vue';
 
-const emit = defineEmits(["delete"])
-defineProps<Props>()
+  const emit = defineEmits(["delete"])
 
-type Props = {
-  persons: Person[];
-}
+  defineProps<{
+    persons: Person[];
+  }>()
 
-/**
- * 削除処理
- * @param person 削除データ
- */
-const onDeleteClick = (person: Person) => {
-  if (confirm("delete " + person.name + " ?")) {
-    emit("delete", person)
+  /**
+   * 削除処理
+   * @param person 削除データ
+   */
+  const onDeleteClick = (person: Person) => {
+    if (confirm("delete " + person.name + " ?")) {
+      emit("delete", person)
+    }
   }
-}
-
 </script>
 <style>
 .person-list {

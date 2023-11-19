@@ -53,6 +53,7 @@
 </template>
 <script setup lang="ts">
 import { inject, ref } from 'vue';
+import axios from 'axios';
 import { IntroductionModel } from "../model/introductionModel"
 import { historyFunctionKey } from '../injections/historyInjectionKey';
 
@@ -67,14 +68,22 @@ import { historyFunctionKey } from '../injections/historyInjectionKey';
     interested: [],
     learn: [],
   })
-
+  
   /**
    * セーブボタン押下時
    */
   const save = () => {
-    clearForm();
-    alert("execute save!!")
-    addHistory();
+    axios.post("https://vue-practice-b85ac-default-rtdb.firebaseio.com/test.json", {
+      data: data.value
+    })
+    .then(() => {
+      clearForm();
+      addHistory();
+      alert("success")
+    })
+    .catch(() => {
+      alert("failed")
+    })
   }
 
   /**

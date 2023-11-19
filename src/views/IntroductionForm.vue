@@ -77,12 +77,14 @@ import { historyFunctionKey } from '../injections/historyInjectionKey';
       data: data.value
     })
     .then(() => {
-      clearForm();
       addHistory();
       alert("success")
     })
     .catch(() => {
       alert("failed")
+    })
+    .finally(() => {
+      clearForm();
     })
   }
 

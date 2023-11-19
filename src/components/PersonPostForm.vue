@@ -4,7 +4,7 @@
     <div class="input-container">
       <div class="input-column">
         <span class="input-label">name:</span>
-        <input v-model="inputName" type="text" class="input-name">
+        <input v-model="inputName" v-focus type="text" class="input-name">
       </div>
       <div class="input-column">
         <span class="input-label">age:</span>
@@ -17,9 +17,19 @@
   </div>
 </template>
 <script setup lang="ts">
-  import { ref, defineEmits, computed } from 'vue';
+  import { historyFunctionKey } from '../injections/historyInjectionKey';
+import { ref, defineEmits, computed, inject } from 'vue';
 
   const emit = defineEmits(["register"])
+
+  /** 履歴追加処理のインジェクション */
+  const addHistory = inject(historyFunctionKey, () => ({}));
+
+  /** 独自で定義したディレクティブ */
+  const vFocus = (el: HTMLElement) => {
+    // 入力欄にフォーカスが当たる
+    el.focus();
+  }
 
   /** 連番（ID） */
   let seq = 1;
@@ -35,6 +45,8 @@
     const person = {id: seq++, name: isNullOrEmpty(inputName.value) ? "unknown" : inputName.value, age: inputAge.value};
     emit("register", person);
     clearInput();
+
+    addHistory()
   }
 
   /**
@@ -102,4 +114,4 @@
   color: red;
   margin-bottom: 5px;
 }
-</style>
+</style>@/injections/historyInjectionKey

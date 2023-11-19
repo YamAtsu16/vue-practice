@@ -3,6 +3,7 @@
     <button @click="changeTab(1)">Tab1</button>
     <button @click="changeTab(2)">Tab2</button>
     <button @click="changeTab(3)">Tab3</button>
+    <button @click="changeTab(4)">Tab4</button>
   </div>
   <component :is="currentComponent"></component>
 </template>
@@ -11,6 +12,7 @@
   import Person from "./views/Person.vue";
   import History from "./views/History.vue";
   import CardList from "./views/CardList.vue";
+  import IntroductionForm from "./views/IntroductionForm.vue";
   import { HistoryModel } from "./model/histroryModel";
   import { historyKey, historyFunctionKey } from "./injections/historyInjectionKey"
 
@@ -25,6 +27,8 @@
       case 2:
         return CardList;
       case 3:
+        return IntroductionForm;
+      case 4:
         return History;
       default:
         return Person;
@@ -77,10 +81,10 @@
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
 .tab-container {
+  text-align: center;
   margin-bottom: 20px;
 }
-</style>./injections/historyInjectionKey
+</style>

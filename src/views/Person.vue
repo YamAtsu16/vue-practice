@@ -1,10 +1,12 @@
 <template>
-  <h1>Person</h1>
-  <div class="container">
-    <PersonPostForm @register="register"/>
+  <div class="main">
+    <h1>Person</h1>
+    <div class="container">
+      <PersonPostForm @register="register"/>
       <ul>
         <PersonList :persons="persons" @delete="deletePerson"/>
       </ul>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
@@ -36,9 +38,12 @@ import { ref } from "vue";
   }
 </script>
 <style>
+.main {
+  text-align: center;
+}
 .container {
   display: flex;
   flex-direction: column;
-  align-items: center;;
+  align-items: center;
 }
 </style>

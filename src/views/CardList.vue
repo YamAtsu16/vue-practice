@@ -1,31 +1,33 @@
 <template>
-  <h1>Card</h1>
-  <div class="container">
-    <Card title="Title" class="card">
-      <div class="contents">
-        <span>no message</span>
-      </div>
-      <template #footer>
-        <div>footer</div>
-      </template>
-    </Card>
-    <Card title="Icons" class="card">
-      <div class="contents">
-        <RocketIcon />
-        <RocketIcon />
-        <RocketIcon />
-      </div>
-    </Card>
-    <Card title="Icons with Text" class="card">
-      <div class="contents">
-        <RocketIcon />
-        <span class="with-text-card">Rocket</span>
-        <RocketIcon />
-      </div>
-      <template #footer>
-        Hello World!!
-      </template>
-    </Card>
+  <div class="main">
+    <h1>Card</h1>
+    <div class="container">
+      <Card title="Title" class="card">
+        <div class="contents">
+          <span>no message</span>
+        </div>
+        <template #footer>
+          <div>footer</div>
+        </template>
+      </Card>
+      <Card title="Icons" class="card">
+        <div class="contents">
+          <RocketIcon />
+          <RocketIcon />
+          <RocketIcon />
+        </div>
+      </Card>
+      <Card title="Icons with Text" class="card">
+        <div class="contents">
+          <RocketIcon />
+          <span class="with-text-card">Rocket</span>
+          <RocketIcon />
+        </div>
+        <template #footer>
+          Hello World!!
+        </template>
+      </Card>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
@@ -33,6 +35,9 @@
   import RocketIcon from '../components/RocketIcon.vue';
 </script>
 <style>
+.main {
+  text-align: center;
+}
 span {
   font-size: 18px;
 }
